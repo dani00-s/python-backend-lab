@@ -3,7 +3,7 @@ import json
 import os
 from collections import Counter
 
-LOG_FILE_PATH = "rufus.log"
+LOG_FILE_PATH = "server.log"
 OUTPUT_JSON_PATH = "error_summary.json"
 OUTPUT_CSV_PATH = "error_summary.csv"
 
