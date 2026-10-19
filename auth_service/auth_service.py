@@ -4,7 +4,7 @@ from pydantic import BaseModel, EmailStr, Field, model_validator
 
 app = FastAPI(title="Registrazione Utenti - Validazione Avanzata")
 
-# Corretto il tipo delle chiavi: int invece di str
+
 fake_users_db: dict[int, dict] = {}
 
 class UserRegisterIn(BaseModel):
@@ -13,9 +13,9 @@ class UserRegisterIn(BaseModel):
         min_length=3,
         max_length=20,
         pattern=r"^[a-zA-Z0-9_]+$",
-        description="solo caratteri alfanumerici o underscore",  # Aggiunta virgola
+        description="solo caratteri alfanumerici o underscore",  
     )
-    email: EmailStr  # In minuscolo e indentato nella classe
+    email: EmailStr  
     eta: int = Field(..., ge=18, le=120, description="L'utente deve avere almeno 18 anni")
     password: str = Field(..., min_length=8, description="Minimo 8 caratteri")
     conferma_password: str = Field(..., description="Deve coincidere con la password")
@@ -36,8 +36,9 @@ class UserOut(BaseModel):
     "/register",
     response_model=UserOut,
     status_code=status.HTTP_201_CREATED,
-    summary="Registra un nuovo utente",  # Aggiunta virgola sopra
+    summary="Registra un nuovo utente", 
 )
+    
 def register(user_data: UserRegisterIn):
     for existing_users in fake_users_db.values():
         if existing_users["email"] == user_data.email:
