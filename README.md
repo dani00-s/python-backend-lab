@@ -1,4 +1,4 @@
-# Python Backend Lab
+# Python Backend 
 
 Progetti pratici di backend in Python.
 
